@@ -81,7 +81,7 @@ class PredictionService:
         image = Image.open(BytesIO(image_bytes)).convert("RGB")
         image = image.resize(self.image_size)
         array = keras.utils.img_to_array(image).astype("float32")
-        array = keras.applications.mobilenet_v2.preprocess_input(array)
+        array = keras.applications.efficientnet.preprocess_input(array)
         return np.expand_dims(array, axis=0)
 
     def predict(self, image_bytes: bytes) -> Dict:
